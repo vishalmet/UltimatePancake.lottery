@@ -57,7 +57,7 @@ const CustomButton = () => {
                     if (!connected) {
                       return (
                         <motion.button
-                          className="text-white w-[350px] md:w-[455px] h-[48px] bg-[#FEC61F] border-2 border-[#FEC61F] font-bold hover:bg-[#FEC61F]/40 rounded-[32px] flex justify-center items-center"
+                          className="text-white w-[350px] md:w-[455px] h-[48px] bg-gradient-to-t from-[#492C81]/60 to-[#7343D2]/60 border border-[#7343D2] hover:from-[#492C81]/30 hover:to-[#7343D2]/30 font-bold rounded-[32px] flex justify-center items-center shadow-lg"
                           onClick={openConnectModal}
                           type="button"
                           whileTap={{ scale: 0.9 }}
@@ -78,7 +78,7 @@ const CustomButton = () => {
                     if (chain.unsupported) {
                       return (
                         <motion.button
-                          className=" text-white w-[350px] md:w-[455px] h-[48px] bg-[#A881FC] border-2 border-[#bg-[#A881FC]] font-bold hover:bg-[#A881FC]/40 rounded-[32px]"
+                          className=" text-white w-[350px] md:w-[455px] h-[48px] bg-gradient-to-t from-[#492C81]/60 to-[#7343D2]/60 border border-[#7343D2] hover:from-[#492C81]/30 hover:to-[#7343D2]/30 font-bold rounded-[32px]"
                           onClick={openChainModal}
                           type="button"
                           whileTap={{ scale: 0.9 }}
@@ -91,7 +91,7 @@ const CustomButton = () => {
                     return (
                       <div className="w-[350px] md:w-[455px] h-[48px]">
                         <motion.button
-                          className=" text-white p-2 w-full h-[48px] border-2 border-[#FEC61F] font-bold bg-[#FEC61F]/40 rounded-[32px]"
+                          className=" text-white p-2 w-full h-[48px] bg-gradient-to-t from-[#492C81]/60 to-[#7343D2]/60 border border-[#7343D2] hover:from-[#492C81]/30 hover:to-[#7343D2]/30 font-bold rounded-[32px]"
                           onClick={openAccountModal}
                           whileTap={{ scale: 0.9 }}
                           type="button"
