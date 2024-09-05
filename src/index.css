@@ -1,3 +1,88 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.inter-font {
+    font-family: "Inter";
+  }
+
+  @keyframes floatingStarsLeft {
+    from {
+      transform: translate(0, 0px);
+    }
+    50% {
+      transform: translate(10px, 10px);
+    }
+    to {
+      transform: translate(0, -0px);
+    }
+  }
+  
+  @keyframes floatingStarsRight {
+    from {
+      transform: translate(0, 0px);
+    }
+    50% {
+      transform: translate(-10px, 10px);
+    }
+    to {
+      transform: translate(0, -0px);
+    }
+  }
+
+ @keyframes floatingTicketLeft{
+  from {
+    transform: translate(0,  0px);
+  }
+  50% {
+    transform: translate(-10px, 15px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
+}
+
+@keyframes floatingTicketRight {
+  from {
+    transform: translate(0,  0px);
+  }
+  50% {
+    transform: translate(10px, 15px);
+  }
+  to {
+    transform: translate(0, -0px);
+  }
+}
+
+@keyframes floatingMainTicket{
+  from {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(6deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+  .star-left {
+    animation: floatingStarsLeft 5s ease-in-out infinite;
+  }
+  
+  .star-right {
+    animation: floatingStarsRight 5s ease-in-out infinite;
+  }
+
+  .ticket-left {
+    animation: floatingTicketLeft 5s ease-in-out infinite;
+  }
+
+  .ticket-right {
+    animation: floatingTicketRight 5s ease-in-out infinite;
+  }
+
+  .ticket-main {
+    animation: floatingMainTicket 3s ease-in-out infinite;
+  }
+  
