@@ -20,6 +20,11 @@ const BuyBtn = () => {
     setShowModal2(true); 
   };
 
+  const switchToModal1 = () => {
+    setShowModal2(false); // Close Modal2
+    setIsModalOpen(true); // Open Modal1
+  };
+
   return (
     <div>
       {/* Background Content */}
@@ -42,7 +47,7 @@ const BuyBtn = () => {
             switchToModal2={switchToModal2}
             ticketCount={ticketCount}
             setTicketCount={setTicketCount}
-            totalCost={totalCost} // Pass total cost
+            totalCost={totalCost} 
           />
         </div>
       )}
@@ -52,8 +57,9 @@ const BuyBtn = () => {
         <div className="fixed inset-0 z-50">
           <Modal2
             isOpen={showModal2}
-            toggleModal={() => setShowModal2(false)} // Close Modal2
-            totalCost={totalCost} // Pass total cost to Modal2
+            toggleModal={() => setShowModal2(false)} 
+            switchToModal1={switchToModal1} 
+            totalCost={totalCost}
           />
         </div>
       )}

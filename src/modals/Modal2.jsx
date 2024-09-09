@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 
-const Modal2 = ({ isOpen, toggleModal, totalCost }) => {
+const Modal2 = ({ isOpen, toggleModal, totalCost, switchToModal1 }) => {
   // State to hold the 6 random numbers
   const [randomNumbers, setRandomNumbers] = useState([1, 2, 3, 4, 5, 6]);
 
   // Function to generate 6 random numbers between 0 and 9
   const handleRandomize = () => {
-    const newNumbers = Array.from({ length: 6 }, () => Math.floor(Math.random() * 10));
+    const newNumbers = Array.from({ length: 6 }, () =>
+      Math.floor(Math.random() * 10)
+    );
     setRandomNumbers(newNumbers); // Update the state with new random numbers
   };
 
@@ -37,14 +39,17 @@ const Modal2 = ({ isOpen, toggleModal, totalCost }) => {
           <div className="p-4 px-6 space-y-3">
             <div className="flex justify-between items-center">
               <p className=" text-[#B3A9CD] font-semibold">Total Cost:</p>
-              <p className="font-bold">~{totalCost} CAKE</p> {/* Display total cost */}
+              <p className="font-bold">~{totalCost} CAKE</p>{" "}
+              {/* Display total cost */}
             </div>
             <p className=" text-xs text-[#B3A9CD] font-semibold">
-              Numbers are randomized with no duplicates among your tickets. Tap a number to edit it. <br />Available digits: 0-9
+              Numbers are randomized with no duplicates among your tickets. Tap
+              a number to edit it. <br />
+              Available digits: 0-9
             </p>
 
-            <motion.button 
-              whileTap={{scale : 0.9}}
+            <motion.button
+              whileTap={{ scale: 0.9 }}
               className="border-2 border-[#1FC7D4] hover:border-[#1FC7D4]/80 text-[#1FC7D4] hover:text-[#1FC7D4]/80 transition-colors duration-200 p-2 w-full rounded-full font-bold"
               onClick={handleRandomize} // Call the randomize function on click
             >
@@ -61,12 +66,32 @@ const Modal2 = ({ isOpen, toggleModal, totalCost }) => {
               </p>
             </div>
             <motion.button
-            className="bg-[#1FC7D4] hover:bg-[#1FC7D4]/50 transition-colors duration-200 p-2 w-full rounded-xl text-black font-bold"
-            whileTap={{ scale: 0.9 }}
-            // onClick={switchToModal2}
-          >
-            Confirm and buy
-          </motion.button>
+              className="bg-[#1FC7D4] hover:bg-[#1FC7D4]/50 transition-colors duration-200 p-2 w-full rounded-xl text-black font-bold"
+              whileTap={{ scale: 0.9 }}
+            >
+              Confirm and Buy
+            </motion.button>
+            <motion.button
+              className="border-2 border-[#1FC7D4] hover:border-[#1FC7D4]/80 text-[#1FC7D4] hover:text-[#1FC7D4]/80 transition-colors duration-200 p-2 w-full rounded-xl font-bold flex justify-center items-center gap-1"
+              whileTap={{ scale: 0.9 }}
+              onClick={switchToModal1}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="size-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M10.5 19.5 3 12m0 0 7.5-7.5M3 12h18"
+                />
+              </svg>
+              Go Back
+            </motion.button>
           </div>
         </div>
       </div>
