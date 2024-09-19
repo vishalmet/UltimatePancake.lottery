@@ -10,8 +10,9 @@ import BuyBtn from "./components/BuyBtn";
 
 const App = () => {
   return (
-    <div className="bg-gradient-radial from-[#A881FC] to-[#5F39AA] bg-center bg-cover min-h-screen inter-font">
-      <div className="flex flex-col items-center mx-auto min-h-screen text-white max-w-[600px] pt-20 relative">
+    <div className="bg-gradient-radial from-[#A881FC] to-[#5F39AA] bg-center bg-cover flex justify-center items-center min-h-screen inter-font">
+      <div className="flex flex-col justify-center items-center mx-auto min-h-screen text-white max-w-[600px] relative">
+        <div className="">
         <div className="flex justify-center">
           <div className="space-y-3">
             <img className="h-12 mx-auto" src={HeaderLogo} alt="Header Logo" />
@@ -39,6 +40,7 @@ const App = () => {
           <img className="absolute left-5 bottom-0 h-20 ticket-left" src={TicketLeft} alt="" />
           <img className="absolute right-10 bottom-0 h-20 ticket-right" src={TicketRight} alt="" />
         </div>
+      </div>
       </div>
     </div>
   );
