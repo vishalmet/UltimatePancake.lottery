@@ -15,7 +15,7 @@ const Modal2 = ({ isOpen, toggleModal, totalCost, switchToModal1 }) => {
 
   return (
     isOpen && (
-      <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center z-50">
+      <div className="fixed inset-0 bg-black bg-opacity-70 flex justify-center items-center z-50">
         <div className="bg-[#27262C] h-fit rounded-xl shadow-lg mt-2 w-[350px]">
           <div className="bg-[#3B384D] flex justify-between p-2 px-6 rounded-t-xl">
             <p className="font-bold">Edit Numbers</p>
