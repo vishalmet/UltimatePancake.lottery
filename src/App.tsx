@@ -11,7 +11,7 @@ import BuyBtn from "./components/BuyBtn";
 import useCakePrice from "./hooks/useCakePrice";
 import BigNumber from 'bignumber.js';
 import memoize from 'lodash/memoize';
-
+import axios from "axios"
 // Define constants
 const BIG_TEN = new BigNumber(10);
 const BIG_ZERO = new BigNumber(0);
@@ -63,6 +63,12 @@ const id = res.toString();
         
         const prizeInBusd = amountCollectedInCake * (cakePriceBusd)
         console.log("price in busd", prizeInBusd);
+        console.log("price in busd in corect format", prizeInBusd * 1000);
+        const convertedValue = (prizeInBusd / 1e+18).toFixed(3); // Dividing by 10^18
+console.log("convertedValue",convertedValue); // Outputs: "35.403"
+
+const formattedValue = (prizeInBusd / 1e+18).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+console.log("formattedValue",formattedValue); // Outputs: "35,403"
 
         // const prizeTotal = getBalanceNumber(prizeInBusd)
 
@@ -75,9 +81,12 @@ const id = res.toString();
     }
   }
 
+
+
   useEffect(
     ()=>{
       getVal()
+
     },[cakePriceBusd]
   )
   return (
