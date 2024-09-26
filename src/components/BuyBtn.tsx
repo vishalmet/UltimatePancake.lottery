@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Modal from "../modals/Modal1.tsx"; 
 import Modal2 from "../modals/Modal2.jsx"; 
 
-const BuyBtn = ({price, discount}) => {
+const BuyBtn = ({price, discount, lotteryId}) => {
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [showModal2, setShowModal2] = useState(false); 
   const [ticketCount, setTicketCount] = useState(0); // Ticket count state lifted here
@@ -50,6 +50,7 @@ console.log("price",price);
             totalCost={totalCost} 
             priceTicketInCake={price}
             discountDivisor={discount}
+            lotteryId={lotteryId}
           />
         </div>
       )}

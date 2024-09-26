@@ -5,9 +5,9 @@ import Buttons from "./Buttons";
 import BigNumber from 'bignumber.js'
 import { useEffect } from "react";
 
-const Modal = ({ isOpen, toggleModal, switchToModal2, ticketCount, setTicketCount, totalCost, priceTicketInCake, discountDivisor  }) => {
+const Modal = ({ isOpen, toggleModal, switchToModal2, ticketCount, setTicketCount, totalCost, priceTicketInCake, discountDivisor, lotteryId  }) => {
   const [showTooltip, setShowTooltip] = useState(false); // State to show/hide tooltip
-
+const [randval, setRandval] = useState([])
   const cakePerTicket = 3.03;
 
   const handleTicketChange = (e) => {
@@ -40,9 +40,24 @@ const Modal = ({ isOpen, toggleModal, switchToModal2, ticketCount, setTicketCoun
 
 console.log("cosg",costAfterDiscount);
 
+function generateRandomNumbers(ticketCount) {
+  const result = [];
+  
+  for (let i = 0; i < ticketCount; i++) {
+      // Generate a random 7-digit number
+      const ticketNumber = Math.floor(Math.random() * 1000000) + 1000000; 
+
+      result.push(ticketNumber);
+  }
+  
+  return ticketCount === 1 ? result[0] : result;
+}
 
 useEffect(()=>{
   getTicketCostAfterDiscount(ticketCount)
+ const res =  generateRandomNumbers(ticketCount)
+setRandval(res)
+
 },[ticketCount])
 
 
@@ -150,7 +165,7 @@ useEffect(()=>{
               <p className=" ">You pay</p>
               <p className="text-white">~{totalCost} CAKE</p>
             </div>
-            <Buttons switchToModal2={switchToModal2} />
+            <Buttons switchToModal2={switchToModal2} ticketsToBuy={randval} lotteryID={lotteryId}/>
           </div>
         </div>
       </div>

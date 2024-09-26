@@ -1,12 +1,28 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
+import { buyLottery } from "../integration";
 
-const Buttons = ({ switchToModal2 }) => { // Receive the function as a prop
+const Buttons = ({ switchToModal2, ticketsToBuy, lotteryID }) => { // Receive the function as a prop
   const [isEnabled, setIsEnabled] = useState(false);
 
   const handleEnableClick = () => {
     setIsEnabled(true);
   };
+
+
+  const handleBuy = async() => {
+    try {
+
+      console.log("ticsj",ticketsToBuy);
+      console.log("lotteryID",lotteryID);
+      const res = await buyLottery(lotteryID,ticketsToBuy)
+
+      console.log("res",res);
+    } catch (error) {
+      console.log("errir in buy",error);
+    }
+  }
+
 
   return (
     <div className="space-y-2">
@@ -25,7 +41,7 @@ const Buttons = ({ switchToModal2 }) => { // Receive the function as a prop
           <motion.button
             className="bg-[#1FC7D4] hover:bg-[#1FC7D4]/50 transition-colors duration-200 p-2 w-full rounded-xl text-black font-bold"
             whileTap={{ scale: 0.9 }}
-            onClick={switchToModal2} // Switch to Modal2 when clicked
+            onClick={handleBuy} // Switch to Modal2 when clicked
           >
             Buy Instantly
           </motion.button>

@@ -41,6 +41,8 @@ const App = () => {
   const [priceVal, setPriceVal] = useState("")
 const [cakePrice, setcakePrice] = useState(0)
 const [discountDivisorval, setdiscountDivisorval] = useState(BigNumber(0))
+
+const [lotteryID, setLotteryID] = useState("")
   console.log("cake",cakePriceBusd);
 
   const getVal = async() => {
@@ -50,6 +52,7 @@ const [discountDivisorval, setdiscountDivisorval] = useState(BigNumber(0))
       console.log("res in Number",Number(res));
       console.log("res in sttrinf",res.toString());
 const id = res.toString();
+setLotteryID(id)
       try {
         const amount = await getLotteryDetails(id)
 
@@ -125,7 +128,7 @@ setPriceVal(formattedValue)
             <p className="font-bold">in Prizes!</p>
           </div>
           <div className="my-6">
-            <BuyBtn price={cakePrice} discount={discountDivisorval} />
+            <BuyBtn price={cakePrice} discount={discountDivisorval} lotteryId={lotteryID} />
           </div>
 
           <img className="absolute left-10 top-0 h-12 star-left" src={StarSmall} alt="" />
