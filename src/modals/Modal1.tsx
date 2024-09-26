@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState , useCallback } from "react";
 import TicketLeft from "../assets/ticket-r.png";
 import { motion } from "framer-motion";
 import Buttons from "./Buttons";
+import BigNumber from 'bignumber.js'
+import { useEffect } from "react";
 
-const Modal = ({ isOpen, toggleModal, switchToModal2, ticketCount, setTicketCount, totalCost }) => {
+const Modal = ({ isOpen, toggleModal, switchToModal2, ticketCount, setTicketCount, totalCost, priceTicketInCake, discountDivisor  }) => {
   const [showTooltip, setShowTooltip] = useState(false); // State to show/hide tooltip
 
   const cakePerTicket = 3.03;
@@ -14,6 +16,35 @@ const Modal = ({ isOpen, toggleModal, switchToModal2, ticketCount, setTicketCoun
       setTicketCount(value);
     }
   };
+
+  const getTicketCostAfterDiscount = useCallback(
+    (ticketCount: BigNumber) => {
+
+      console.log("priceTicketInCake",priceTicketInCake);
+      
+
+      const priceInBN = new BigNumber(priceTicketInCake)
+      const totalAfterDiscount = priceInBN
+        .times(ticketCount)
+        .times(new BigNumber(discountDivisor).plus(1).minus(ticketCount))
+        .div(discountDivisor)
+
+        console.log("tad",totalAfterDiscount);
+        console.log("tad",Number(totalAfterDiscount));
+        
+      return totalAfterDiscount
+    },
+    [discountDivisor, priceTicketInCake],
+  )
+  const costAfterDiscount = getTicketCostAfterDiscount(ticketCount)
+
+console.log("cosg",costAfterDiscount);
+
+
+useEffect(()=>{
+  getTicketCostAfterDiscount(ticketCount)
+},[ticketCount])
+
 
   return (
     isOpen && (

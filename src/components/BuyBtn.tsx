@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import TicketButton from "../assets/ticketbutton1.png";
 import { motion } from "framer-motion";
-import Modal from "../modals/Modal1"; 
-import Modal2 from "../modals/Modal2"; 
+import Modal from "../modals/Modal1.tsx"; 
+import Modal2 from "../modals/Modal2.jsx"; 
 
-const BuyBtn = () => {
+const BuyBtn = ({price, discount}) => {
   const [isModalOpen, setIsModalOpen] = useState(false); 
   const [showModal2, setShowModal2] = useState(false); 
-  const [ticketCount, setTicketCount] = useState(""); // Ticket count state lifted here
+  const [ticketCount, setTicketCount] = useState(0); // Ticket count state lifted here
   const cakePerTicket = 3.03;
-
+console.log("price",price);
   // Calculate the total cost based on ticket count
-  const totalCost = (ticketCount * cakePerTicket).toFixed(2);
+  const totalCost = (ticketCount * price).toFixed(2);
 
   const toggleModal = () => setIsModalOpen(!isModalOpen);
 
@@ -48,6 +48,8 @@ const BuyBtn = () => {
             ticketCount={ticketCount}
             setTicketCount={setTicketCount}
             totalCost={totalCost} 
+            priceTicketInCake={price}
+            discountDivisor={discount}
           />
         </div>
       )}
